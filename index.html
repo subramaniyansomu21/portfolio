@@ -64,11 +64,8 @@
           <div class="hero-actions">
             <a class="button button-primary" href="#projects">View Projects</a>
             <a class="button button-secondary" href="#contact">Contact</a>
-            <a class="button button-muted" href="#" aria-label="Download Resume">
+            <a class="button button-muted" href="assets/subramaniyan_VT226_updated_resume.pdf" aria-label="Download Resume">
               Download Resume
-            </a>
-            <a class="button button-muted" href="#" aria-label="GitHub Profile">
-              GitHub
             </a>
           </div>
         </div>
@@ -345,22 +342,21 @@
             <ul class="contact-list">
               <li><span>Email</span><a href="mailto:subramaniyansomu21@gmail.com">subramaniyansomu21@gmail.com</a></li>
               <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/subramaniyan-somu/" target="_blank" rel="noreferrer">linkedin.com/in/subramaniyan-somu/</a></li>
-              <li><span>GitHub</span><a href="#" target="_blank" rel="noreferrer">github.com/your-profile</a></li>
             </ul>
           </div>
 
           <form class="section-card contact-form" action="#" method="post">
             <div class="form-group">
               <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name">
+              <input id="name" name="name" type="text" placeholder="Your name" required maxlength="100">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="your.email@example.com">
+              <input id="email" name="email" type="email" placeholder="your.email@example.com" required maxlength="150">
             </div>
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or role."></textarea>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or role." required maxlength="5000"></textarea>
             </div>
             <button class="button button-primary" type="submit">Send</button>
             <p class="form-note" id="form-note" aria-live="polite">
