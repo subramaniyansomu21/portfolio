@@ -1,0 +1,13 @@
+{
+  "name": "subramaniyan-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal portfolio site with a Node contact form endpoint.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "nodemailer": "^6.10.1"
+  }
+}
