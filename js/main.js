@@ -92,12 +92,56 @@ function typeTagline(index = 0) {
 }
 
 if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    if (formNote) {
-      formNote.textContent =
-        "Message sending is not connected yet. Add your backend endpoint or email service to enable it.";
+    // Get form data
+    const formData = new FormData(contactForm);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    // Disable submit button
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        if (formNote) {
+          formNote.textContent = "Message sent successfully! I'll get back to you soon.";
+          formNote.style.color = "green";
+        }
+        contactForm.reset();
+      } else {
+        throw new Error(result.error || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      if (formNote) {
+        formNote.textContent = "Failed to send message. Please try again or contact me directly.";
+        formNote.style.color = "red";
+      }
+    } finally {
+      // Re-enable submit button
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Send";
+      }
     }
   });
 }
